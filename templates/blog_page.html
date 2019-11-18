@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% include 'navbar.html' %}
+{% block content_title %} Главная страница блога {% endblock %}
+
+{% block content %}
+    <div class="container">
+    {% for item in context.notes %}
+        <div class="row card mt-5">
+            <div class="card-header">
+                <a href="#">{{ item.title }}</a>
+            </div>
+            <div class="card-body"> {{ item.message }} </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
