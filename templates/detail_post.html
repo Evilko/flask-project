@@ -4,15 +4,11 @@
 
 {% block content %}
     <div class="container">
-    {% for item in context.notes %}
         <div class="row card mt-5">
             <div class="card-header">
-                <a href="{{ url_for('blog.post_page', id=item.id) }}">
-                    {{ item.title }}</a>
+                <p>{{ context.note.title }}</p>
             </div>
-            <div class="card-body"> {{ item.message |truncate(30, True)}}
-            </div>
+            <div class="card-body"> {{ context.note.message }} </div>
         </div>
-    {% endfor %}
     </div>
 {% endblock %}

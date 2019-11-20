@@ -16,9 +16,28 @@ class BlogView(MethodView):
         )
 
 
+class PostView(MethodView):
+    def get(self, id):
+        note = Note.select().where(Note.id == id)
+        print(note)
+        return render_template(
+            'detail_post.html',
+            context={
+                'note': note[0]
+            }
+        )
+
+
 bp.add_url_rule(
     '/',
     view_func=BlogView.as_view(
         name='blog_page',
+    ),
+)
+
+bp.add_url_rule(
+    '/post/<int:id>',
+    view_func=PostView.as_view(
+        name='post_page',
     ),
 )
