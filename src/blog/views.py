@@ -1,13 +1,18 @@
 from flask import Blueprint, render_template
 from flask.views import MethodView
 from src.blog.models import Note
+from flask import session
 
 bp = Blueprint('blog', __name__, template_folder='templates')
 
 
 class BlogView(MethodView):
     def get(self):
-        notes = Note.select()
+        if 'auth' in session and session['auth']:
+            print('123')
+            notes = Note.select()
+        else:
+            notes = Note.select().where(Note.only_auth == False)
         return render_template(
             'blog_page.html',
             context={

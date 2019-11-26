@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% include 'navbar.html' %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <form class="card" id="register_form" method="post">
+                    <div class="card-header">Регистрация</div>
+                    <div class="card-body">
+                        <label for="login" class="mb-3">Логин:
+                            <input name="login" type="text">
+                        </label>
+                        <label for="password" class="mb-3">Пароль:
+                            <input name="password" type="password">
+                        </label>
+                    </div>
+                    <button id="send" class="btn-success">Готово!</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous">
+    </script>
+
+    <script>
+        $("#register_form").submit(function(event){
+            event.preventDefault();
+            $.ajax({
+              data: $("#register_form").serialize(),
+              method: 'post',
+              success: function () {
+                location.href = '/'
+              },
+            })
+        });
+    </script>
+
+{% endblock %}

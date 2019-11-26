@@ -2,18 +2,26 @@
 {% include 'navbar.html' %}
 {% block content_title %} Главная страница блога {% endblock %}
 
-<div class="jumbotron">
-  <h1 class="display-4">Привет, мир!</h1>
-  <p class="lead">Это простой пример блока с компонентом в стиле jumbotron для привлечения дополнительного внимания к содержанию или информации.</p>
-  <hr class="my-4">
-  <p>Использются служебные классы для типографики и расстояния содержимого в контейнере большего размера.</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-  </p>
-</div>
 
 {% block content %}
     <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-4">Авторизация</h1>
+      <p class="lead">
+           Если у вас нет аккаунта вы можете зарегистрироваться.<br>
+          <a class="btn btn-primary btn-lg" href="{{ url_for('main_auth.register') }}" role="button">
+              Регстриация
+          </a>
+      </p>
+      <hr class="my-4">
+      <p>
+          Для того что бы видеть все посты, пожалуйста войдите. <br>
+        <a class="btn btn-primary btn-lg" href="{{ url_for('main_auth.login') }}" role="button">
+            Войти
+        </a>
+      </p>
+    </div>
+
     {% for item in context.notes %}
         <div class="row card mt-5">
             <div class="card-header">

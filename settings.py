@@ -17,3 +17,4 @@ class Config:
     PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
     CREATE_ADMIN = os.getenv('CREATE_ADMIN', False)
     SECRET_KEY = 'SO_SECRET'
+    SESSION_TYPE = 'filesystem'
